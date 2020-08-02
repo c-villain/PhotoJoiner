@@ -90,10 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				5A6B53B924D7737D00C39A7E /* Views */,
-				5A6B53B724D7732500C39A7E /* UIElements􀈐 */,
+				5A6B53B724D7732500C39A7E /* UIElements🧩 */,
 				5A6B53B024D761A700C39A7E /* Extensions */,
 				5A55A7C824D6E034004CD22D /* ViewModel */,
-				5A55A7C624D4B1A2004CD22D /* Root􀈨 */,
+				5A55A7C624D4B1A2004CD22D /* Root📲 */,
 				5A55A7C724D4B2DD004CD22D /* SupportingFiles */,
 			);
 			path = PhotoJoiner;
@@ -125,13 +125,13 @@
 			path = "ImagePicker􀏫";
 			sourceTree = "<group>";
 		};
-		5A55A7C624D4B1A2004CD22D /* Root􀈨 */ = {
+		5A55A7C624D4B1A2004CD22D /* Root📲 */ = {
 			isa = PBXGroup;
 			children = (
 				5A4A14AB24D40952005449BE /* AppDelegate.swift */,
 				5A4A14AD24D40952005449BE /* SceneDelegate.swift */,
 			);
-			path = "Root􀈨";
+			path = "Root📲";
 			sourceTree = "<group>";
 		};
 		5A55A7C724D4B2DD004CD22D /* SupportingFiles */ = {
@@ -161,13 +161,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		5A6B53B724D7732500C39A7E /* UIElements􀈐 */ = {
+		5A6B53B724D7732500C39A7E /* UIElements🧩 */ = {
 			isa = PBXGroup;
 			children = (
 				5A6B53B824D7736900C39A7E /* Modal */,
 				5A55A7C524D4B160004CD22D /* ImagePicker􀏫 */,
 			);
-			path = "UIElements􀈐";
+			path = "UIElements🧩";
 			sourceTree = "<group>";
 		};
 		5A6B53B824D7736900C39A7E /* Modal */ = {
