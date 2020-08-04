@@ -11,66 +11,59 @@ import SwiftUI
 struct StylesView: View {
     @ObservedObject var imagesViewModel: ImagesViewModel
     
-    @State var show = false
+    @State var showHoriz = false
+    @State var showVert = false
+    @State var showTable = false
 
-    @State var selectedStyle = Styles.horizontal
-    
     var body: some View {
         VStack{
             Spacer()
             HStack{
                 Button(action: {
-                    selectedStyle = .horizontal
-                    show.toggle()
-                    
+                    showHoriz = true
                 }) {
                     Image(systemName: "square.and.line.vertical.and.square")
                         .renderingMode(.none)
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
+                }.sheet(isPresented: $showHoriz){
+                    HorizontalStyleView(viewModel: self.imagesViewModel)
                 }
                 
                 Spacer()
                 
                 Button(action: {
-                    selectedStyle = .vertical
-                    show.toggle()
+                    showVert = true
                 }) {
                     Image(systemName: "text.justify")
                         .renderingMode(.none)
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
+                }.sheet(isPresented: $showVert){
+                    VerticalStyleView()
                 }
                 
                 Spacer()
                 
                 Button(action: {
-                    selectedStyle = .table
-                    show.toggle()
+                    showTable = true
                 }) {
                     Image(systemName: "table")
                         .renderingMode(.none)
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
+                }.sheet(isPresented: $showTable){
+                    TableStyleView()
                 }
+                
             } //HStack
         } //VStack
         .padding()
-        .sheet(isPresented: $show) {
-            switch selectedStyle {
-            case .horizontal:
-                HorizontalStyleView(viewModel: self.imagesViewModel)
-            case .vertical:
-                VerticalStyleView()
-            case .table:
-                TableStyleView()
-            }
-        }
     }
 }
 
 struct StylesView_Previews: PreviewProvider {
     static var previews: some View {
-        StylesView(imagesViewModel: ImagesViewModel(), selectedStyle: .horizontal)
+        StylesView(imagesViewModel: ImagesViewModel())
     }
 }
