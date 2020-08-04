@@ -10,8 +10,7 @@ import SwiftUI
 import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
-//    @Environment(\.presentationMode) var presentationMode
-//    @Binding var images: [UIImage]
+
     @ObservedObject var imagesViewModel: ImagesViewModel
     @Binding var pickerShowed: Bool
     
