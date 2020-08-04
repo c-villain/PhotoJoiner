@@ -27,7 +27,7 @@ final class ImagePickerCoordinator: NSObject, PHPickerViewControllerDelegate {
                         return
                     }
                     DispatchQueue.main.async {
-                    self.imagePicker.imagesViewModel.append(image as! UIImage)//.append(image as! UIImage)
+                    self.imagePicker.imagesViewModel.append(image as! UIImage)
                     }
                 }
             }
