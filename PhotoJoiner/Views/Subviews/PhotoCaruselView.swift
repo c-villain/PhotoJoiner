@@ -34,7 +34,7 @@ struct PhotoCaruselView: View{
                         VStack(alignment: .leading,spacing: 18){
                             
                             Button(action: {
-                                withAnimation{
+                                withAnimation(.easeIn(duration: 0.4)){
                                     //restoring previous photo
                                     if scrolled > 0 {
                                         imagesVM.changeImageOffset(at: curPhotoIndex - 1, offset:  (calculateWidth() + 60))
