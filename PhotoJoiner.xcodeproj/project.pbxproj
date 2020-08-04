@@ -3,22 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1E387224D9E09800362BA2 /* ImageMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E387124D9E09800362BA2 /* ImageMerger.swift */; };
 		5A4A14AC24D40952005449BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AB24D40952005449BE /* AppDelegate.swift */; };
 		5A4A14AE24D40952005449BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AD24D40952005449BE /* SceneDelegate.swift */; };
-		5A4A14B024D40952005449BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AF24D40952005449BE /* ContentView.swift */; };
+		5A4A14B024D40952005449BE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AF24D40952005449BE /* MainView.swift */; };
 		5A4A14B224D40953005449BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4A14B124D40953005449BE /* Assets.xcassets */; };
 		5A4A14B524D40953005449BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4A14B424D40953005449BE /* Preview Assets.xcassets */; };
 		5A4A14C324D40953005449BE /* PhotoJoinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14C224D40953005449BE /* PhotoJoinerTests.swift */; };
 		5A55A7C224D49DFE004CD22D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55A7C124D49DFE004CD22D /* ImagePicker.swift */; };
 		5A55A7C424D4AD2C004CD22D /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55A7C324D4AD2C004CD22D /* ImagePickerCoordinator.swift */; };
 		5A55A7CA24D6E047004CD22D /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55A7C924D6E047004CD22D /* ImagesViewModel.swift */; };
-		5A6B53AF24D7615900C39A7E /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B53AE24D7615900C39A7E /* UIImageExt.swift */; };
-		5A6B53B424D76B8000C39A7E /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B53B324D76B8000C39A7E /* ViewExtensions.swift */; };
-		5A6B53B624D76B8900C39A7E /* BottomSheetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B53B524D76B8900C39A7E /* BottomSheetModal.swift */; };
+		5A8180CE24DA052B001E4C5D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8180CD24DA052B001E4C5D /* ImageSaver.swift */; };
+		5A8180D124DA1250001E4C5D /* SlidingRuler in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8180D024DA1250001E4C5D /* SlidingRuler */; };
 		5ADA86B924D8164F00FFE05F /* HorizontalStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADA86B824D8164F00FFE05F /* HorizontalStyleView.swift */; };
 		5ADA86BB24D8166000FFE05F /* VerticalStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADA86BA24D8166000FFE05F /* VerticalStyleView.swift */; };
 		5ADA86BD24D8166B00FFE05F /* TableStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADA86BC24D8166B00FFE05F /* TableStyleView.swift */; };
@@ -39,10 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A1E387124D9E09800362BA2 /* ImageMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMerger.swift; sourceTree = "<group>"; };
 		5A4A14A824D40952005449BE /* PhotoJoiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoJoiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4A14AB24D40952005449BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A4A14AD24D40952005449BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5A4A14AF24D40952005449BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A4A14AF24D40952005449BE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5A4A14B124D40953005449BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A4A14B424D40953005449BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A4A14B924D40953005449BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,9 +53,7 @@
 		5A55A7C124D49DFE004CD22D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5A55A7C324D4AD2C004CD22D /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		5A55A7C924D6E047004CD22D /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
-		5A6B53AE24D7615900C39A7E /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
-		5A6B53B324D76B8000C39A7E /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		5A6B53B524D76B8900C39A7E /* BottomSheetModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetModal.swift; sourceTree = "<group>"; };
+		5A8180CD24DA052B001E4C5D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		5ADA86B824D8164F00FFE05F /* HorizontalStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStyleView.swift; sourceTree = "<group>"; };
 		5ADA86BA24D8166000FFE05F /* VerticalStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStyleView.swift; sourceTree = "<group>"; };
 		5ADA86BC24D8166B00FFE05F /* TableStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableStyleView.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8180D124DA1250001E4C5D /* SlidingRuler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,6 @@
 				5ADA86BE24D830A100FFE05F /* Model */,
 				5A6B53B924D7737D00C39A7E /* Views */,
 				5A6B53B724D7732500C39A7E /* UIElements🧩 */,
-				5A6B53B024D761A700C39A7E /* Extensions */,
 				5A55A7C824D6E034004CD22D /* ViewModel */,
 				5A55A7C624D4B1A2004CD22D /* Root📲 */,
 				5A55A7C724D4B2DD004CD22D /* SupportingFiles */,
@@ -167,37 +166,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		5A6B53B024D761A700C39A7E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5A6B53B324D76B8000C39A7E /* ViewExtensions.swift */,
-				5A6B53AE24D7615900C39A7E /* UIImageExt.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		5A6B53B724D7732500C39A7E /* UIElements🧩 */ = {
 			isa = PBXGroup;
 			children = (
-				5A6B53B824D7736900C39A7E /* Modal */,
 				5A55A7C524D4B160004CD22D /* ImagePicker􀏫 */,
 			);
 			path = "UIElements🧩";
-			sourceTree = "<group>";
-		};
-		5A6B53B824D7736900C39A7E /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-				5A6B53B524D76B8900C39A7E /* BottomSheetModal.swift */,
-			);
-			path = Modal;
 			sourceTree = "<group>";
 		};
 		5A6B53B924D7737D00C39A7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5ADA86C324D9957300FFE05F /* Subviews */,
-				5A4A14AF24D40952005449BE /* ContentView.swift */,
 				5ADA86B824D8164F00FFE05F /* HorizontalStyleView.swift */,
 				5ADA86BA24D8166000FFE05F /* VerticalStyleView.swift */,
 				5ADA86BC24D8166B00FFE05F /* TableStyleView.swift */,
@@ -210,6 +190,8 @@
 			children = (
 				5ADA86BF24D830E900FFE05F /* PhotoImage.swift */,
 				5ADA86C824D9AA7500FFE05F /* Styles.swift */,
+				5A8180CD24DA052B001E4C5D /* ImageSaver.swift */,
+				5A1E387124D9E09800362BA2 /* ImageMerger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,6 +199,7 @@
 		5ADA86C324D9957300FFE05F /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				5A4A14AF24D40952005449BE /* MainView.swift */,
 				5ADA86C424D9959300FFE05F /* PhotoCaruselView.swift */,
 				5ADA86C624D9983C00FFE05F /* StylesView.swift */,
 			);
@@ -239,6 +222,9 @@
 			dependencies = (
 			);
 			name = PhotoJoiner;
+			packageProductDependencies = (
+				5A8180D024DA1250001E4C5D /* SlidingRuler */,
+			);
 			productName = PhotoJoiner;
 			productReference = 5A4A14A824D40952005449BE /* PhotoJoiner.app */;
 			productType = "com.apple.product-type.application";
@@ -289,6 +275,9 @@
 				Base,
 			);
 			mainGroup = 5A4A149F24D40952005449BE;
+			packageReferences = (
+				5A8180CF24DA1250001E4C5D /* XCRemoteSwiftPackageReference "SlidingRuler" */,
+			);
 			productRefGroup = 5A4A14A924D40952005449BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -324,19 +313,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ADA86C024D830E900FFE05F /* PhotoImage.swift in Sources */,
-				5A6B53AF24D7615900C39A7E /* UIImageExt.swift in Sources */,
+				5A1E387224D9E09800362BA2 /* ImageMerger.swift in Sources */,
 				5A55A7CA24D6E047004CD22D /* ImagesViewModel.swift in Sources */,
 				5ADA86BB24D8166000FFE05F /* VerticalStyleView.swift in Sources */,
 				5ADA86C524D9959300FFE05F /* PhotoCaruselView.swift in Sources */,
 				5ADA86B924D8164F00FFE05F /* HorizontalStyleView.swift in Sources */,
 				5ADA86C724D9983C00FFE05F /* StylesView.swift in Sources */,
-				5A6B53B424D76B8000C39A7E /* ViewExtensions.swift in Sources */,
+				5A8180CE24DA052B001E4C5D /* ImageSaver.swift in Sources */,
 				5A4A14AC24D40952005449BE /* AppDelegate.swift in Sources */,
-				5A6B53B624D76B8900C39A7E /* BottomSheetModal.swift in Sources */,
 				5A55A7C224D49DFE004CD22D /* ImagePicker.swift in Sources */,
 				5ADA86C924D9AA7500FFE05F /* Styles.swift in Sources */,
 				5A4A14AE24D40952005449BE /* SceneDelegate.swift in Sources */,
-				5A4A14B024D40952005449BE /* ContentView.swift in Sources */,
+				5A4A14B024D40952005449BE /* MainView.swift in Sources */,
 				5A55A7C424D4AD2C004CD22D /* ImagePickerCoordinator.swift in Sources */,
 				5ADA86BD24D8166B00FFE05F /* TableStyleView.swift in Sources */,
 			);
@@ -592,6 +580,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A8180CF24DA1250001E4C5D /* XCRemoteSwiftPackageReference "SlidingRuler" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Pyroh/SlidingRuler";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A8180D024DA1250001E4C5D /* SlidingRuler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A8180CF24DA1250001E4C5D /* XCRemoteSwiftPackageReference "SlidingRuler" */;
+			productName = SlidingRuler;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A4A14A024D40952005449BE /* Project object */;
 }
