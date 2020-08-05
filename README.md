@@ -12,7 +12,7 @@ Main idea based on [photojoiner.net](https://old.photojoiner.net).
 
 ## Requirements
 
-- Xcode 12
+- Xcode 12 (currently beta versions)
 - iOS 14 or later
 
 ## Platforms
