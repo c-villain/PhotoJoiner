@@ -15,11 +15,15 @@ struct HorizontalStyleView: View {
     
     @State private var spaceValue: Double = 0
     
+    @State private var margins: Double = 0
+    
+    @State private var showRuller = false
+    
     var body: some View {
         LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
             .edgesIgnoringSafeArea(.all).overlay(
                 VStack{
-                    let image = viewModel.mergeHorizontPhotos(spaceBetweenImages: CGFloat(spaceValue)) ?? UIImage(imageLiteralResourceName: "topbg")
+                    let image = viewModel.mergeHorizontPhotos(spaceBetweenImages: CGFloat(margins)) ?? UIImage(imageLiteralResourceName: "topbg")
                     
                     let imageSaver = ImageSaver()
                        
@@ -29,8 +33,25 @@ struct HorizontalStyleView: View {
                     GeometryReader{geo in
                         VStack(alignment: .leading){
                             Spacer()
-                            SlidingRuler(value: $spaceValue,
-                                         in: 0...300).padding()
+                            Toggle(isOn: $showRuller) {
+                                Text("Margin between images").font(.title).foregroundColor(Color("Color")).multilineTextAlignment(.center).padding()
+                            }.onChange(of: showRuller){ value in
+                                if value == false{
+                                    margins = 0
+                                } else{
+                                    margins = spaceValue
+                                }
+                            }
+                            .toggleStyle(SwitchToggleStyle(tint: Color("Color")))
+                            .padding()
+                            
+                            if showRuller {
+                                SlidingRuler(value: $spaceValue,
+                                             in: 0...400,
+                                             step: 20,
+                                             onEditingChanged: {_ in margins = spaceValue} ).padding() //adding proxy "margins" for rendering speed increase
+                            }
+                            
                             Spacer()
                             HStack{
                                 Spacer()
@@ -46,7 +67,6 @@ struct HorizontalStyleView: View {
                                 .cornerRadius(8)
                                 Spacer()
                             }
-                            
                         }
                         
                     }
