@@ -13,17 +13,25 @@ struct HorizontalStyleView: View {
     
     @ObservedObject var viewModel: ImagesViewModel
     
-    @State private var spaceValue: Double = 0
+    @State private var rulerMargins: Double = 0
     
     @State private var margins: Double = 0
     
     @State private var showRuller = false
     
+    private let merger: HorizontalMerger
+    
+    init(viewModel: ImagesViewModel, merger: HorizontalMerger) {
+        self.viewModel = viewModel
+        self.merger = merger
+    }
+    
     var body: some View {
         LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
             .edgesIgnoringSafeArea(.all).overlay(
                 VStack{
-                    let image = viewModel.mergeHorizontPhotos(spaceBetweenImages: CGFloat(margins)) ?? UIImage(imageLiteralResourceName: "topbg")
+                    let image = merger.mergePhotos(images: viewModel.images, spaceBetweenImages: CGFloat(margins)) ??
+                        UIImage(imageLiteralResourceName: "topbg")
                     
                     let imageSaver = ImageSaver()
                        
@@ -39,17 +47,17 @@ struct HorizontalStyleView: View {
                                 if value == false{
                                     margins = 0
                                 } else{
-                                    margins = spaceValue
+                                    margins = rulerMargins
                                 }
                             }
                             .toggleStyle(SwitchToggleStyle(tint: Color("Color")))
                             .padding()
                             
                             if showRuller {
-                                SlidingRuler(value: $spaceValue,
+                                SlidingRuler(value: $rulerMargins,
                                              in: 0...400,
                                              step: 20,
-                                             onEditingChanged: {_ in margins = spaceValue} ).padding() //adding proxy "margins" for rendering speed increase
+                                             onEditingChanged: {_ in margins = rulerMargins} ).padding() //adding proxy "margins" for rendering speed increase
                             }
                             
                             Spacer()
@@ -89,6 +97,6 @@ struct Rounded : Shape {
 
 struct HorizontalStyleView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalStyleView(viewModel: ImagesViewModel())
+        HorizontalStyleView(viewModel: ImagesViewModel(), merger: HorizontalMerger())
     }
 }

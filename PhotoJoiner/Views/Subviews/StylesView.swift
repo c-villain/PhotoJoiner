@@ -14,6 +14,13 @@ struct StylesView: View {
     @State var showHoriz = false
     @State var showVert = false
     @State var showTable = false
+    
+    private let locator: ServiceLocator
+    
+    init(imagesViewModel: ImagesViewModel, locator: ServiceLocator){
+        self.imagesViewModel = imagesViewModel
+        self.locator = locator
+    }
 
     var body: some View {
         VStack{
@@ -27,7 +34,7 @@ struct StylesView: View {
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
                 }.sheet(isPresented: $showHoriz){
-                    HorizontalStyleView(viewModel: self.imagesViewModel)
+                    HorizontalStyleView(viewModel: imagesViewModel, merger: locator.getService())
                 }
                 
                 Spacer()
@@ -64,6 +71,6 @@ struct StylesView: View {
 
 struct StylesView_Previews: PreviewProvider {
     static var previews: some View {
-        StylesView(imagesViewModel: ImagesViewModel())
+        StylesView(imagesViewModel: ImagesViewModel(), locator: ServiceLocator())
     }
 }

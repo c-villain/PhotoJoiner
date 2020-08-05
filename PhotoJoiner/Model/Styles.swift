@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Styles{
-    case horizontal
-    case vertical
-    case table
-}
+//enum Styles{
+//    case horizontal
+//    case vertical
+//    case table
+//}
