@@ -1,29 +1,32 @@
 //
-//  HorizontalMerger.swift
+//  VerticalMerger.swift
 //  PhotoJoiner
 //
 //  Created by Alexander Kraev on 05.08.2020.
 //  Copyright © 2020 Alexander Kraev. All rights reserved.
 //
 
+
 import SwiftUI
 
-class HorizontalMerger: ImageMergerProtocol{
+class VerticalMerger: ImageMergerProtocol{
     
     func getMergedSize(images: [PhotoImage], spaceBetweenImages:CGFloat) -> CGSize{
-        var fullWidth: CGFloat = 0
-        var maxHeight: CGFloat = images[0].image.size.height
+        guard !images.isEmpty else {return CGSize(width: 0, height: 0)} //if array is empty size is zero
+
+        var maxWidth: CGFloat =  images[0].image.size.width
+        var fullHeight: CGFloat = 0
 
         for index in 0..<images.count {
-            fullWidth += images[index].image.size.width
+            fullHeight += images[index].image.size.height
             if (index+1 < images.count) {
-                fullWidth += spaceBetweenImages
+                fullHeight += spaceBetweenImages
             }
-            if (maxHeight < images[index].image.size.height) {
-                maxHeight = images[index].image.size.height
+            if (maxWidth < images[index].image.size.width) {
+                maxWidth = images[index].image.size.width
             }
         }
-        return CGSize(width: fullWidth, height: maxHeight)
+        return CGSize(width: maxWidth, height: fullHeight)
     }
     
     func merge(images: [PhotoImage], spaceBetweenImages: CGFloat) -> UIImage? {
@@ -35,22 +38,25 @@ class HorizontalMerger: ImageMergerProtocol{
 
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
+
+        let count = images.count
         
         for index in 0..<images.count {
-
-            var imageX: CGFloat = 0
+            var imageY: CGFloat = 0
             for inx in 0..<index {
-                imageX += images[inx].image.size.width
-                if (inx+1 < images.count) {
-                    imageX += spaceBetweenImages
+                imageY += images[count - 1 - inx].image.size.height
+                if (count - 2 - inx < images.count) {
+                    imageY += spaceBetweenImages
                 }
             }
-            let imageY:CGFloat = (size.height - images[index].image.size.height)
-            let rect = CGRect(x: imageX, y: imageY, width: images[index].image.size.width, height: images[index].image.size.height)
-            
-            context?.draw(images[index].image.cgImage!, in: rect)
+            let rect = CGRect(x: 0, //always from left corner
+                              y: imageY,
+                              width: images[count - 1 - index].image.size.width,
+                              height: images[count - 1 - index].image.size.height)
+
+            context?.draw(images[count - 1 - index].image.cgImage!, in: rect)
         }
-     
+        
         let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -58,6 +64,6 @@ class HorizontalMerger: ImageMergerProtocol{
         
         return resultImageimage
     }
-    
-    
+
 }
+

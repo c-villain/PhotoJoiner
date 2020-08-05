@@ -18,7 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         let locator = ServiceLocator()
         let horizMerger = HorizontalMerger()
+        let vertMerger = VerticalMerger()
+        
         locator.registerService(service: horizMerger)
+        locator.registerService(service: vertMerger)
         
         let viewModel = ImagesViewModel()
         let contentView = MainView()
