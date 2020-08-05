@@ -1,6 +1,6 @@
 # PhotoJoiner
 
-Merge photos an easiest way.
+Merge photos an easiest way on your iPhone.
 
 <p align="left">
 <img src="https://github.com/c-villain/PhotoJoiner/blob/master/.assets/screens.png" alt="PhotoJoiner Screenshots" height="600">
