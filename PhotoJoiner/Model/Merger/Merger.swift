@@ -27,12 +27,10 @@ class Merger: MergerProtocol, ObservableObject{
                 }
                 
                 rowWidth += images[x][y].image.size.width
-                if( y != images[x].count){
-                    rowWidth += spaceBetweenImages
-                }
+                rowWidth += spaceBetweenImages
             }
             //try to find max row width: row by row,
-            //if previous row width< current row width,
+            //if previous row width < current row width,
             //then increase total width:
             if (fullWidth < rowWidth) {
                 fullWidth = rowWidth
@@ -46,14 +44,12 @@ class Merger: MergerProtocol, ObservableObject{
             fullHeight += rowHeight
             
             //adding between rows spaces:
-            if( x != images[x].count){
-                fullHeight += spaceBetweenImages
-            }
+            fullHeight += spaceBetweenImages
             //after that set height for next row to 0:
             rowHeight = 0
         }
 
-        return CGSize(width: fullWidth, height: fullHeight)
+        return CGSize(width: fullWidth + spaceBetweenImages, height: fullHeight + spaceBetweenImages)
     }
     
     func merge(images: [PhotoImage], columns: Int, spaceBetweenImages: CGFloat) -> UIImage? {
@@ -74,8 +70,9 @@ class Merger: MergerProtocol, ObservableObject{
         let context = UIGraphicsGetCurrentContext()
   
         // (x,y) - coordinate for  next picture
-        var imgX: CGFloat = 0
-        var imgY: CGFloat = 0
+        //start coordinates
+        var imgX: CGFloat = spaceBetweenImages
+        var imgY: CGFloat = spaceBetweenImages
         
         for x in 0..<splittedImages.count{
             var nextYRow: CGFloat = 0
@@ -90,7 +87,7 @@ class Merger: MergerProtocol, ObservableObject{
             for y in 0..<splittedImages[x].count{
                 
                 let rect = CGRect(x: imgX,
-                                  y: imgY + nextYRow - splittedImages[x][y].image.size.height,//imgY,
+                                  y: imgY + nextYRow - splittedImages[x][y].image.size.height,
                                   width: splittedImages[x][y].image.size.width,
                                   height: splittedImages[x][y].image.size.height)
 
@@ -107,11 +104,7 @@ class Merger: MergerProtocol, ObservableObject{
             imgY += nextYRow + spaceBetweenImages
             nextYRow = 0
 
-//            if( x splittedImages[x].count){
-//                imgY += spaceBetweenImages
-//            }
-
-            imgX = 0
+            imgX = spaceBetweenImages
         }
         
         let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
