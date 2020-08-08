@@ -45,4 +45,9 @@ final class ImagesViewModel: ObservableObject{
         guard self.images.count > index else {return}
         self.images[index].offset += offset
     }
+    
+    public func shuffle(){
+        guard self.images.count > 0 else {return}
+        self.images.shuffle()
+    }
 }

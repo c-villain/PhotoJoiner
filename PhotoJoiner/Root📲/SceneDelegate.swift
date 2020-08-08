@@ -16,17 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
-        let locator = ServiceLocator()
-        let horizMerger = HorizontalMerger()
-        let vertMerger = VerticalMerger()
-        
-        locator.registerService(service: horizMerger)
-        locator.registerService(service: vertMerger)
+        let merger = Merger()
+
         
         let viewModel = ImagesViewModel()
         let contentView = MainView()
             .environmentObject(viewModel)
-            .environmentObject(locator)
+            .environmentObject(merger)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

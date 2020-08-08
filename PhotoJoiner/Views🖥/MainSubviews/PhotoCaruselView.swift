@@ -45,7 +45,6 @@ struct PhotoCaruselView: View{
                             }) {
                                 Spacer()
                                 Image(systemName: "trash.fill")
-                                    .renderingMode(.none)
                                     .foregroundColor(Color("Color"))
                                     .font(.title3)
                             }

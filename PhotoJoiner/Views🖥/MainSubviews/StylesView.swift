@@ -15,11 +15,11 @@ struct StylesView: View {
     @State var showVert = false
     @State var showTable = false
     
-    private let locator: ServiceLocator
+    private let merger: Merger
     
-    init(imagesViewModel: ImagesViewModel, locator: ServiceLocator){
+    init(imagesViewModel: ImagesViewModel, merger: Merger){
         self.imagesViewModel = imagesViewModel
-        self.locator = locator
+        self.merger = merger
     }
 
     var body: some View {
@@ -30,11 +30,10 @@ struct StylesView: View {
                     showHoriz = true
                 }) {
                     Image(systemName: "square.and.line.vertical.and.square")
-                        .renderingMode(.none)
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
                 }.sheet(isPresented: $showHoriz){
-                    HorizontalStyleView(viewModel: imagesViewModel, merger: locator.getService())
+                    HorizontalStyleView(viewModel: imagesViewModel, merger: merger)
                 }
                 
                 Spacer()
@@ -43,11 +42,10 @@ struct StylesView: View {
                     showVert = true
                 }) {
                     Image(systemName: "text.justify")
-                        .renderingMode(.none)
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
                 }.sheet(isPresented: $showVert){
-                    VerticalStyleView(viewModel: imagesViewModel, merger: locator.getService())
+                    VerticalStyleView(viewModel: imagesViewModel, merger: merger)
                 }
                 
                 Spacer()
@@ -56,11 +54,10 @@ struct StylesView: View {
                     showTable = true
                 }) {
                     Image(systemName: "table")
-                        .renderingMode(.none)
                         .foregroundColor(Color("Color"))
                         .font(.largeTitle)
                 }.sheet(isPresented: $showTable){
-                    TableStyleView()
+                    TableStyleView(viewModel: imagesViewModel, merger: merger)
                 }
                 
             } //HStack
@@ -71,6 +68,6 @@ struct StylesView: View {
 
 struct StylesView_Previews: PreviewProvider {
     static var previews: some View {
-        StylesView(imagesViewModel: ImagesViewModel(), locator: ServiceLocator())
+        StylesView(imagesViewModel: ImagesViewModel(), merger: Merger())
     }
 }

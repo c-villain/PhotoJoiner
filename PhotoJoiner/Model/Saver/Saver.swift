@@ -1,5 +1,5 @@
 //
-//  ImageSaver.swift
+//  Saver.swift
 //  PhotoJoiner
 //
 //  Created by Alexander Kraev on 05.08.2020.
@@ -8,7 +8,7 @@
 
 import PhotosUI
 
-class ImageSaver: NSObject {
+class Saver: NSObject {
     func writeToPhotoAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
     }

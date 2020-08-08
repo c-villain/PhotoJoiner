@@ -2,12 +2,30 @@
   "object": {
     "pins": [
       {
+        "package": "ActivityIndicatorView",
+        "repositoryURL": "https://github.com/exyte/ActivityIndicatorView.git",
+        "state": {
+          "branch": null,
+          "revision": "25bc58019d161295bf4ae0a4d764170e882ab856",
+          "version": "0.0.3"
+        }
+      },
+      {
         "package": "CoreGeometry",
         "repositoryURL": "https://gitlab.com/Pyroh/CoreGeometry.git",
         "state": {
           "branch": null,
           "revision": "c8604b90dc60084e9d08f289573e537585b84129",
           "version": "4.0.0"
+        }
+      },
+      {
+        "package": "PopupView",
+        "repositoryURL": "https://github.com/exyte/PopupView.git",
+        "state": {
+          "branch": null,
+          "revision": "3c6a25413e0ce7248d8e702c9764230fec2787a5",
+          "version": "0.0.7"
         }
       },
       {

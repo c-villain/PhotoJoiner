@@ -19,9 +19,9 @@ struct HorizontalStyleView: View {
     
     @State private var showRuller = false
     
-    private let merger: HorizontalMerger
+    private let merger: Merger
     
-    init(viewModel: ImagesViewModel, merger: HorizontalMerger) {
+    init(viewModel: ImagesViewModel, merger: Merger) {
         self.viewModel = viewModel
         self.merger = merger
     }
@@ -30,10 +30,10 @@ struct HorizontalStyleView: View {
         LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
             .edgesIgnoringSafeArea(.all).overlay(
                 VStack{
-                    let image = merger.merge(images: viewModel.images, spaceBetweenImages: CGFloat(margins)) ??
+                    let image = merger.merge(images: viewModel.images, columns: viewModel.images.count, spaceBetweenImages: CGFloat(margins)) ??
                         UIImage(imageLiteralResourceName: "topbg")
                     
-                    let imageSaver = ImageSaver()
+                    let imageSaver = Saver()
                     
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack(alignment: .center){
@@ -50,7 +50,7 @@ struct HorizontalStyleView: View {
                         VStack(alignment: .leading){
                             Spacer()
                             Toggle(isOn: $showRuller) {
-                                Text("Margin between images").font(.title).foregroundColor(Color("Color")).multilineTextAlignment(.center).padding()
+                                Text("Margin").font(.title).foregroundColor(Color("Color")).multilineTextAlignment(.center).padding()
                             }.onChange(of: showRuller){ value in
                                 if value == false{
                                     margins = 0
@@ -75,7 +75,7 @@ struct HorizontalStyleView: View {
                                     imageSaver.writeToPhotoAlbum(image: image)
                                 }) {
                                     HStack(spacing: 6){
-                                        Text("Export")
+                                        Text("Join photos")
                                         Image("arrow").renderingMode(.original)
                                     }.foregroundColor(.white)
                                     .padding()
@@ -96,6 +96,6 @@ struct HorizontalStyleView: View {
 
 struct HorizontalStyleView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalStyleView(viewModel: ImagesViewModel(), merger: HorizontalMerger())
+        HorizontalStyleView(viewModel: ImagesViewModel(), merger: Merger())
     }
 }

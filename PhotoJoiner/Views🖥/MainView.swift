@@ -12,7 +12,7 @@ struct MainView : View {
     
     @State private var pickerShowed = false
     @EnvironmentObject var imagesViewModel: ImagesViewModel
-    @EnvironmentObject var serviceLocator: ServiceLocator
+    @EnvironmentObject var merger: Merger
     
     var body: some View {
 //        LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
@@ -28,7 +28,6 @@ struct MainView : View {
                                 self.pickerShowed = true
                             }) {
                                 Image(systemName: "photo.on.rectangle")
-                                    .renderingMode(.none)
                                     .foregroundColor(Color("Color"))
                                     .font(.title3)
                             }
@@ -38,7 +37,7 @@ struct MainView : View {
                         }
                         PhotoCaruselView(imagesVM: self.imagesViewModel)
                         
-                        StylesView(imagesViewModel: self.imagesViewModel, locator: serviceLocator)
+                        StylesView(imagesViewModel: self.imagesViewModel, merger: merger)
                     } //VStack
                     .padding()
                 }//ScrollView
