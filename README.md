@@ -9,6 +9,7 @@ Merge photos an easiest way on your iPhone.
 <p align="left">
 <img src="https://github.com/c-villain/PhotoJoiner/blob/master/.assets/photojoiner.gif" alt="PhotoJoiner Screenshots" height="480">
 </p>
+
 ## About
 
 Main idea based on [photojoiner.net](https://old.photojoiner.net).
