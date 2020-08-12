@@ -17,13 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
         let merger = Merger()
-
+        let saver = Saver()
         
-        let viewModel = ImagesViewModel()
+        let viewModel = ImagesViewModel(merger: merger, saver: saver)
+        
         let contentView = MainView()
             .environmentObject(viewModel)
-            .environmentObject(merger)
-
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

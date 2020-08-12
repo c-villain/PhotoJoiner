@@ -11,43 +11,49 @@ import SwiftUI
 struct MainView : View {
     
     @State private var pickerShowed = false
+    
     @EnvironmentObject var imagesViewModel: ImagesViewModel
-    @EnvironmentObject var merger: Merger
     
     var body: some View {
-//        LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
-//            .edgesIgnoringSafeArea(.all).overlay(
         ZStack{
-            
             LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
-                            .edgesIgnoringSafeArea(.all)
-                ScrollView(.vertical, showsIndicators: false){
-                    VStack(alignment: .leading, spacing: 12){
-                        HStack{
-                            Button(action: {
-                                self.pickerShowed = true
-                            }) {
-                                Image(systemName: "photo.on.rectangle")
-                                    .foregroundColor(Color("Color"))
-                                    .font(.title3)
-                            }
-                            Spacer()
-                        }.sheet(isPresented: $pickerShowed) {
-                            ImagePicker(imagesViewModel: imagesViewModel, pickerShowed: $pickerShowed)
+                .edgesIgnoringSafeArea(.all)
+            
+            Image("photojoiner")
+                .renderingMode(.template)
+                .foregroundColor(Color("Color"))
+                .opacity(0.08)
+                .padding(.top, -(UIScreen.main.bounds.height / 4))
+            
+            ScrollView(.vertical, showsIndicators: false){
+                VStack(alignment: .leading){
+                    Spacer()
+                    HStack(alignment: .center){
+                        Button(action: {
+                            self.pickerShowed = true
+                        }) {
+                            Image("Add")
+                                .renderingMode(.template)
+                                .foregroundColor(Color("Color"))
                         }
-                        PhotoCaruselView(imagesVM: self.imagesViewModel)
                         
-                        StylesView(imagesViewModel: self.imagesViewModel, merger: merger)
+                    }.sheet(isPresented: $pickerShowed) {
+                        ImagePicker(imagesViewModel: imagesViewModel, pickerShowed: $pickerShowed)
+                    }
+                    .padding(.leading)
+                    
+                    PhotoCaruselView(imagesVM: self.imagesViewModel)
+                    
+                    StyleSelectionView(imagesViewModel: self.imagesViewModel)
+                        .offset(y: 50)
                     } //VStack
-                    .padding()
                 }//ScrollView
-//            )//overlay
         } //ZStack
     }//View
 } //ContentView
 
-//struct ContentView_Previews: PreviewProvider {
+//struct MainView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ContentView(imagesViewModel: ImagesViewModel(), styleType: 0)
+//        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
 //    }
 //}

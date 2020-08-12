@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Array {
     func split(into size: Int) -> [[Element]] {

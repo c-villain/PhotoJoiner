@@ -8,32 +8,29 @@
 
 import SwiftUI
 
-struct StylesView: View {
+struct StyleSelectionView: View {
     @ObservedObject var imagesViewModel: ImagesViewModel
     
     @State var showHoriz = false
     @State var showVert = false
     @State var showTable = false
     
-    private let merger: Merger
-    
-    init(imagesViewModel: ImagesViewModel, merger: Merger){
+    init(imagesViewModel: ImagesViewModel){
         self.imagesViewModel = imagesViewModel
-        self.merger = merger
     }
 
     var body: some View {
         VStack{
-            Spacer()
             HStack{
                 Button(action: {
                     showHoriz = true
                 }) {
-                    Image(systemName: "square.and.line.vertical.and.square")
+                    Image("Horiz")
+                        .renderingMode(.template)
                         .foregroundColor(Color("Color"))
-                        .font(.largeTitle)
                 }.sheet(isPresented: $showHoriz){
-                    HorizontalStyleView(viewModel: imagesViewModel, merger: merger)
+                    JoinerView(style: .horizontal,
+                               viewModel: imagesViewModel)
                 }
                 
                 Spacer()
@@ -41,11 +38,12 @@ struct StylesView: View {
                 Button(action: {
                     showVert = true
                 }) {
-                    Image(systemName: "text.justify")
+                    Image("Vert")
+                        .renderingMode(.template)
                         .foregroundColor(Color("Color"))
-                        .font(.largeTitle)
                 }.sheet(isPresented: $showVert){
-                    VerticalStyleView(viewModel: imagesViewModel, merger: merger)
+                    JoinerView(style: .vertical,
+                               viewModel: imagesViewModel)
                 }
                 
                 Spacer()
@@ -53,13 +51,13 @@ struct StylesView: View {
                 Button(action: {
                     showTable = true
                 }) {
-                    Image(systemName: "table")
+                    Image("Table")
+                        .renderingMode(.template)
                         .foregroundColor(Color("Color"))
-                        .font(.largeTitle)
                 }.sheet(isPresented: $showTable){
-                    TableStyleView(viewModel: imagesViewModel, merger: merger)
+                    JoinerView(style: .table,
+                               viewModel: imagesViewModel)
                 }
-                
             } //HStack
         } //VStack
         .padding()
@@ -68,6 +66,6 @@ struct StylesView: View {
 
 struct StylesView_Previews: PreviewProvider {
     static var previews: some View {
-        StylesView(imagesViewModel: ImagesViewModel(), merger: Merger())
+        StyleSelectionView(imagesViewModel: ImagesViewModel(merger: Merger(), saver: Saver()))
     }
 }

@@ -105,6 +105,7 @@ struct PhotoCaruselView: View{
             } //ForEach
         } //ZStack
         .frame(height: UIScreen.main.bounds.height / 2.5)
+        .padding()
     } //some View
     
     func calculateWidth()->CGFloat{
