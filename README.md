@@ -2,15 +2,14 @@
     <img src="https://github.com/c-villain/PhotoJoiner/blob/master/.assets/logo.png" width="400pt">
 </div>
 
+## About
+
 Merge photos an easiest way on your iPhone.
+Main idea based on [photojoiner.net](https://old.photojoiner.net).
 
 <p align="left">
 <img src="https://github.com/c-villain/PhotoJoiner/blob/master/.assets/fullscreen.jpg" alt="PhotoJoiner Screenshots" height="320">
 </p>
-
-## About
-
-Main idea based on [photojoiner.net](https://old.photojoiner.net).
 
 ## Requirements
 
