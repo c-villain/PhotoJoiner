@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A0FD61324E1C81500924732 /* JoinerBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FD61224E1C81500924732 /* JoinerBottomView.swift */; };
 		5A0FD61524E32E2500924732 /* SaverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FD61424E32E2500924732 /* SaverProtocol.swift */; };
+		5A0FD61724E55F2800924732 /* JoinerMiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FD61624E55F2800924732 /* JoinerMiddleView.swift */; };
 		5A1639CE24DC0FFA0086050B /* Merger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1639CD24DC0FFA0086050B /* Merger.swift */; };
 		5A4A14AC24D40952005449BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AB24D40952005449BE /* AppDelegate.swift */; };
 		5A4A14AE24D40952005449BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AD24D40952005449BE /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		5A0FD61224E1C81500924732 /* JoinerBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinerBottomView.swift; sourceTree = "<group>"; };
 		5A0FD61424E32E2500924732 /* SaverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaverProtocol.swift; sourceTree = "<group>"; };
+		5A0FD61624E55F2800924732 /* JoinerMiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinerMiddleView.swift; sourceTree = "<group>"; };
 		5A1639CD24DC0FFA0086050B /* Merger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merger.swift; sourceTree = "<group>"; };
 		5A4A14A824D40952005449BE /* PhotoJoiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoJoiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4A14AB24D40952005449BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				5A4BE98424DF451B0014B69F /* JoinerView.swift */,
 				5A0FD61224E1C81500924732 /* JoinerBottomView.swift */,
+				5A0FD61624E55F2800924732 /* JoinerMiddleView.swift */,
 			);
 			path = MergeViews;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				5A6C666424DAEB890056F253 /* MergerProtocol.swift in Sources */,
 				5ADA86C524D9959300FFE05F /* PhotoCaruselView.swift in Sources */,
 				5ADA86C724D9983C00FFE05F /* StyleSelectionView.swift in Sources */,
+				5A0FD61724E55F2800924732 /* JoinerMiddleView.swift in Sources */,
 				5A1639CE24DC0FFA0086050B /* Merger.swift in Sources */,
 				5A4BE98324DF3D650014B69F /* Style.swift in Sources */,
 				5A8180CE24DA052B001E4C5D /* Saver.swift in Sources */,

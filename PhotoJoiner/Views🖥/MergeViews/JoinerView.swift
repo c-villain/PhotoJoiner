@@ -47,51 +47,12 @@ struct JoinerView: View {
                             .frame(width: UIScreen.main.bounds.width - 30,
                                    height:UIScreen.main.bounds.height / 2.5,
                                    alignment: .center )
-                        
-//                        JoinerSettingsView(viewModel: self.viewModel,
-//                            style: self.style,
-//                            columns: Double(self.columns))
-                        
-                        GeometryReader{geo in
-                            VStack(alignment: .leading){
-                                Spacer()
-                                if showRuller {
-                                    HStack{
-                                        Image("Columns")
-                                            .renderingMode(.template)
-                                            .foregroundColor(Color("Color"))
-                                        
-                                        SlidingRuler(value: $columns,
-                                                     in: 1...20,
-                                                     step: 1,
-                                                     onEditingChanged: {dragStarts in
-                                                        if(!dragStarts){
-                                                            self.viewModel.merge(columns: Int(columns), spaceBetweenImages: margin)
-                                                        }
-                                                     } ).padding()
-                                    }.padding()
-                                }
-                                
-                                HStack{
-                                    Image("Margin")
-                                        .renderingMode(.template)
-                                        .foregroundColor(Color("Color"))
 
-                                    SlidingRuler(value: $margin,
-                                                 in: 0...1000,
-                                                 step: 20,
-                                                 onEditingChanged: {dragStarts in
-                                                    if(!dragStarts){
-                                                        self.viewModel.merge(columns: Int(columns), spaceBetweenImages: margin)
-                                                    }
-                                                 } ).padding()
-                                }
-                                .padding()
-                                Spacer()
-                            }
-                        }
-                        .clipShape(Rounded())
-                        .padding(.top, -75)
+                    
+                        JoinerMiddleView(viewModel: self.viewModel,
+                                         showRuller: self.$showRuller,
+                                         columns: self.$columns,
+                                         margin: self.$margin)
                         
                         JoinerBottomView(viewModel: self.viewModel,
                                          shuffleTapped: { (finishedShuffling) in
