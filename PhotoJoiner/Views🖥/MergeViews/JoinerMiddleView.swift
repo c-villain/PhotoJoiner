@@ -9,6 +9,7 @@
 import SwiftUI
 import SlidingRuler
 
+
 struct JoinerMiddleView: View {
     
     @ObservedObject var viewModel: ImagesViewModel
@@ -18,43 +19,39 @@ struct JoinerMiddleView: View {
     @Binding var margin: Double
     
     var body: some View {
-    
-        
         GeometryReader{geo in
             VStack(alignment: .leading){
                 Spacer()
-                if showRuller {
-                    HStack{
-                        Image("Columns")
+                HStack{
+                    VStack(alignment: .leading){
+                        if showRuller {
+                            Image("Columns")
+                                .renderingMode(.template)
+                                .foregroundColor(Color("Color")).frame(maxHeight: .infinity).padding()
+                        }
+                        Image("Margin")
                             .renderingMode(.template)
-                            .foregroundColor(Color("Color"))
-                        
-                        SlidingRuler(value: $columns,
-                                     in: 1...20,
-                                     step: 1,
+                            .foregroundColor(Color("Color")).frame(maxHeight: .infinity).padding()
+                    }.frame(height: 184)
+                    VStack(alignment: .center){
+                        if showRuller {
+                            CustomStepper(value: $columns,
+                                          onEditingChanged:{_ in
+                                            DispatchQueue.main.async {
+                                                self.viewModel.merge(columns: Int(columns), spaceBetweenImages: margin)
+                                            }
+                                          }).frame(height: 88, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        }
+                        SlidingRuler(value: $margin,
+                                     in: 0...1000,
+                                     step: 20,
                                      onEditingChanged: {dragStarts in
                                         if(!dragStarts){
                                             self.viewModel.merge(columns: Int(columns), spaceBetweenImages: margin)
                                         }
-                                     } ).padding()
-                    }.padding()
-                }
-                
-                HStack{
-                    Image("Margin")
-                        .renderingMode(.template)
-                        .foregroundColor(Color("Color"))
-
-                    SlidingRuler(value: $margin,
-                                 in: 0...1000,
-                                 step: 20,
-                                 onEditingChanged: {dragStarts in
-                                    if(!dragStarts){
-                                        self.viewModel.merge(columns: Int(columns), spaceBetweenImages: margin)
-                                    }
-                                 } ).padding()
-                }
-                .padding()
+                                     } ).frame(height: 88, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    }.frame(height: 184)
+                }.fixedSize(horizontal: false, vertical: true).padding()
                 Spacer()
             }
         }
@@ -63,8 +60,14 @@ struct JoinerMiddleView: View {
     }
 }
 
-//struct JoinerMiddleView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        JoinerMiddleView()
-//    }
-//}
+struct JoinerMiddleView_Previews: PreviewProvider {
+    static var previews: some View {
+        let merger = Merger()
+        let saver = Saver()
+        return JoinerMiddleView(viewModel: ImagesViewModel(merger: merger,
+                                                    saver: saver),
+                         showRuller: .constant(true),
+                         columns: .constant(3),
+                         margin: .constant(140))
+    }
+}
