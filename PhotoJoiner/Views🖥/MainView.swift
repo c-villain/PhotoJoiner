@@ -7,13 +7,13 @@
 //
 
 import SwiftUI
-
+import Photos
 struct MainView : View {
     
     @State private var pickerShowed = false
     
     @EnvironmentObject var imagesViewModel: ImagesViewModel
-    
+
     var body: some View {
         ZStack{
             LinearGradient(gradient: .init(colors: [Color("Top"),Color("Bottom")]), startPoint: .top, endPoint: .bottom)
@@ -30,7 +30,7 @@ struct MainView : View {
                     Spacer()
                     HStack(alignment: .center){
                         Button(action: {
-                            self.pickerShowed = true
+                            self.pickerShowed.toggle()
                         }) {
                             Image("Add")
                                 .renderingMode(.template)
@@ -38,7 +38,43 @@ struct MainView : View {
                         }
                         
                     }.sheet(isPresented: $pickerShowed) {
-                        ImagePicker(imagesViewModel: imagesViewModel, pickerShowed: $pickerShowed)
+                        if #available(iOS 14.0, *) {
+                            ImagePicker(imagesViewModel: imagesViewModel, pickerShowed: $pickerShowed)
+                        }
+                        else {
+                            MultipleImagePickerSheet(pickerShowed: self.$pickerShowed,
+                                doneAction: { (identifiers) in
+
+                                    var arrayOfPHAsset : [PHAsset] = []
+                                    
+                                    let fetchAssets = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: nil)
+                                    
+                                    DispatchQueue.global(qos: .userInteractive).async {
+                                        
+                                        fetchAssets.enumerateObjects({(object: AnyObject!,
+                                                    count: Int,
+                                                    stop: UnsafeMutablePointer<ObjCBool>) in
+
+                                                    if object is PHAsset{
+                                                        let asset = object as! PHAsset
+                                                        print(asset)
+                                                        arrayOfPHAsset.append(asset)
+                                                    }
+                                                })
+                                        
+                                        let options = PHImageRequestOptions()
+                                        options.isSynchronous = true
+
+                                        for asset in arrayOfPHAsset{
+                                            PHCachingImageManager.default().requestImage(for: asset, targetSize: .init(), contentMode: .default, options: options) { (image, _) in
+                                                
+                                                self.imagesViewModel.append(PhotoImage(image: image!, asset: asset))
+                                            }
+                                        }
+                                    }
+                                } //doneAction in MultipleImagePickerSheet
+                            ) //MultipleImagePickerSheet
+                        }
                     }
                     .padding(.leading)
                     
@@ -52,8 +88,10 @@ struct MainView : View {
     }//View
 } //ContentView
 
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-//    }
-//}
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        let merger = Merger()
+        let saver = Saver()
+        return MainView().environmentObject(ImagesViewModel(merger: merger, saver: saver))
+    }
+}

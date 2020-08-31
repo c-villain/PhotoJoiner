@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Photos
 
 final class ImagesViewModel: ObservableObject{
     
@@ -23,10 +24,62 @@ final class ImagesViewModel: ObservableObject{
     }
     
     // MARK: - basic operations (work with image collection)
-    public func append(_ images: UIImage...){
-        for img in images{
-            self.images.append(PhotoImage(image: img, offset: 0))
+    
+    public func append(_ photoImage: PhotoImage){
+        self.images.append(photoImage)
+    }
+    
+//    public func append(_ images: UIImage...){
+//        for img in images{
+//            self.images.append(PhotoImage(image: img, offset: 0, asset: <#PHAsset#>))
+//        }
+//    }
+//
+//    public func append(_ asset: PHAsset){
+//
+//        guard
+//            self.images.append(PhotoImage(image: self.getUIImage(asset: asset),
+//                                          offset: 0, asset: asset))
+//
+//    }
+    
+//    public func append(_ images: [UIImage]){
+//        for img in images{
+//            self.images.append(PhotoImage(image: img, offset: 0))
+//        }
+//    }
+    
+    public func remove(_ image: UIImage){
+        let index = self.index(of: image)
+        guard index != nil else {
+            print("No image found with this id!")
+            return
         }
+        self.images.remove(at: index!)
+    }
+    
+    private func getUIImages(assets: [PHAsset])-> [UIImage]{
+        var array = [UIImage]()
+        for asset in assets {
+            guard let img = self.getUIImage(asset: asset) else {continue}
+            array.append(img)
+        }
+        return array
+    }
+    
+    private func getUIImage(asset: PHAsset) -> UIImage? {
+
+        var img: UIImage?
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        options.version = .original
+        options.isSynchronous = true
+        manager.requestImageDataAndOrientation(for: asset, options: options){ data, _, _, _ in
+            if let data = data {
+                img = UIImage(data: data)
+            }
+        }
+        return img
     }
     
     public func remove(_ image: PhotoImage){
@@ -36,6 +89,33 @@ final class ImagesViewModel: ObservableObject{
             return
         }
         self.images.remove(at: index!)
+    }
+    
+    public func remove(_ asset: PHAsset){
+        let index = self.index(of: asset)
+        guard index != nil else {
+            print("No image found with this asset!")
+            return
+        }
+        self.images.remove(at: index!)
+    }
+    
+    public func index(of asset: PHAsset) -> Int?{
+        for index in 0..<self.images.count{
+            if self.images[index].asset == asset{
+                return index
+            }
+        }
+        return .none
+    }
+    
+    public func index(of img: UIImage) -> Int?{
+        for index in 0..<self.images.count{
+            if self.images[index].image == img{
+                return index
+            }
+        }
+        return .none
     }
     
     public func index(of: PhotoImage) -> Int?{
@@ -59,6 +139,7 @@ final class ImagesViewModel: ObservableObject{
     }
  
     // MARK: - shuffling
+    // TODO: - make for iOS 13
     public func shuffle(){
         guard self.images.count > 0 else {return}
         self.images.shuffle()

@@ -11,6 +11,8 @@
 		5A0FD61524E32E2500924732 /* SaverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FD61424E32E2500924732 /* SaverProtocol.swift */; };
 		5A0FD61724E55F2800924732 /* JoinerMiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FD61624E55F2800924732 /* JoinerMiddleView.swift */; };
 		5A1639CE24DC0FFA0086050B /* Merger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1639CD24DC0FFA0086050B /* Merger.swift */; };
+		5A31C3FA24FBCA99007E177D /* MultipleImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31C3F824FBCA99007E177D /* MultipleImagePicker.swift */; };
+		5A31C3FB24FBCA99007E177D /* MultipleImagePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31C3F924FBCA99007E177D /* MultipleImagePickerSheet.swift */; };
 		5A4A14AC24D40952005449BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AB24D40952005449BE /* AppDelegate.swift */; };
 		5A4A14AE24D40952005449BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AD24D40952005449BE /* SceneDelegate.swift */; };
 		5A4A14B024D40952005449BE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A14AF24D40952005449BE /* MainView.swift */; };
@@ -50,6 +52,8 @@
 		5A0FD61424E32E2500924732 /* SaverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaverProtocol.swift; sourceTree = "<group>"; };
 		5A0FD61624E55F2800924732 /* JoinerMiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinerMiddleView.swift; sourceTree = "<group>"; };
 		5A1639CD24DC0FFA0086050B /* Merger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merger.swift; sourceTree = "<group>"; };
+		5A31C3F824FBCA99007E177D /* MultipleImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleImagePicker.swift; sourceTree = "<group>"; };
+		5A31C3F924FBCA99007E177D /* MultipleImagePickerSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleImagePickerSheet.swift; sourceTree = "<group>"; };
 		5A4A14A824D40952005449BE /* PhotoJoiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoJoiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4A14AB24D40952005449BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A4A14AD24D40952005449BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A31C3F724FBCA6B007E177D /* MultipleImagePicker📷 */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C3F824FBCA99007E177D /* MultipleImagePicker.swift */,
+				5A31C3F924FBCA99007E177D /* MultipleImagePickerSheet.swift */,
+			);
+			path = "MultipleImagePicker📷";
+			sourceTree = "<group>";
+		};
+		5A31C3FC24FBF40B007E177D /* PhotoPicker📷 */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C3FE24FBF421007E177D /* iOS14 */,
+				5A31C3FD24FBF419007E177D /* iOS13 */,
+			);
+			path = "PhotoPicker📷";
+			sourceTree = "<group>";
+		};
+		5A31C3FD24FBF419007E177D /* iOS13 */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C3F724FBCA6B007E177D /* MultipleImagePicker📷 */,
+			);
+			path = iOS13;
+			sourceTree = "<group>";
+		};
+		5A31C3FE24FBF421007E177D /* iOS14 */ = {
+			isa = PBXGroup;
+			children = (
+				5A55A7C524D4B160004CD22D /* ImagePicker📷 */,
+			);
+			path = iOS14;
+			sourceTree = "<group>";
+		};
 		5A4A149F24D40952005449BE = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +230,7 @@
 		5A6B53B724D7732500C39A7E /* UIElements🧩 */ = {
 			isa = PBXGroup;
 			children = (
-				5A55A7C524D4B160004CD22D /* ImagePicker📷 */,
+				5A31C3FC24FBF40B007E177D /* PhotoPicker📷 */,
 				5A6C666F24DB538A0056F253 /* Rounded.swift */,
 				5A9CA6E524F3B2D6003AAD4E /* CustomStepper.swift */,
 			);
@@ -369,6 +407,8 @@
 			files = (
 				5A9CA6E624F3B2D6003AAD4E /* CustomStepper.swift in Sources */,
 				5A6C667024DB538A0056F253 /* Rounded.swift in Sources */,
+				5A31C3FA24FBCA99007E177D /* MultipleImagePicker.swift in Sources */,
+				5A31C3FB24FBCA99007E177D /* MultipleImagePickerSheet.swift in Sources */,
 				5ADA86C024D830E900FFE05F /* PhotoImage.swift in Sources */,
 				5A55A7CA24D6E047004CD22D /* ImagesViewModel.swift in Sources */,
 				5A6C666424DAEB890056F253 /* MergerProtocol.swift in Sources */,
@@ -459,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -513,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -532,7 +572,7 @@
 				DEVELOPMENT_TEAM = TP33793R45;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PhotoJoiner/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -553,7 +593,7 @@
 				DEVELOPMENT_TEAM = TP33793R45;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PhotoJoiner/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
