@@ -23,31 +23,11 @@ final class ImagesViewModel: ObservableObject{
         self.saver = saver
     }
     
-    // MARK: - basic operations (work with image collection)
+    // MARK: - append operations (work with image collection)
     
     public func append(_ photoImage: PhotoImage){
         self.images.append(photoImage)
     }
-    
-//    public func append(_ images: UIImage...){
-//        for img in images{
-//            self.images.append(PhotoImage(image: img, offset: 0, asset: <#PHAsset#>))
-//        }
-//    }
-//
-//    public func append(_ asset: PHAsset){
-//
-//        guard
-//            self.images.append(PhotoImage(image: self.getUIImage(asset: asset),
-//                                          offset: 0, asset: asset))
-//
-//    }
-    
-//    public func append(_ images: [UIImage]){
-//        for img in images{
-//            self.images.append(PhotoImage(image: img, offset: 0))
-//        }
-//    }
     
     public func remove(_ image: UIImage){
         let index = self.index(of: image)
@@ -58,29 +38,7 @@ final class ImagesViewModel: ObservableObject{
         self.images.remove(at: index!)
     }
     
-    private func getUIImages(assets: [PHAsset])-> [UIImage]{
-        var array = [UIImage]()
-        for asset in assets {
-            guard let img = self.getUIImage(asset: asset) else {continue}
-            array.append(img)
-        }
-        return array
-    }
-    
-    private func getUIImage(asset: PHAsset) -> UIImage? {
-
-        var img: UIImage?
-        let manager = PHImageManager.default()
-        let options = PHImageRequestOptions()
-        options.version = .original
-        options.isSynchronous = true
-        manager.requestImageDataAndOrientation(for: asset, options: options){ data, _, _, _ in
-            if let data = data {
-                img = UIImage(data: data)
-            }
-        }
-        return img
-    }
+    // MARK: - remove operations (work with image collection)
     
     public func remove(_ image: PhotoImage){
         let index = self.index(of: image)
@@ -99,6 +57,8 @@ final class ImagesViewModel: ObservableObject{
         }
         self.images.remove(at: index!)
     }
+    
+    // MARK: - finding operations (work with image collection)
     
     public func index(of asset: PHAsset) -> Int?{
         for index in 0..<self.images.count{
@@ -139,7 +99,6 @@ final class ImagesViewModel: ObservableObject{
     }
  
     // MARK: - shuffling
-    // TODO: - make for iOS 13
     public func shuffle(){
         guard self.images.count > 0 else {return}
         self.images.shuffle()
@@ -157,5 +116,31 @@ final class ImagesViewModel: ObservableObject{
     
     public func saveMergedImage(){
         self.saver.writeToPhotoAlbum(image: self.mergedImage)
+    }
+    
+    //MARK: - adapting asset to uiimage
+    
+    private func getUIImages(assets: [PHAsset])-> [UIImage]{
+        var array = [UIImage]()
+        for asset in assets {
+            guard let img = self.getUIImage(asset: asset) else {continue}
+            array.append(img)
+        }
+        return array
+    }
+    
+    private func getUIImage(asset: PHAsset) -> UIImage? {
+
+        var img: UIImage?
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        options.version = .original
+        options.isSynchronous = true
+        manager.requestImageDataAndOrientation(for: asset, options: options){ data, _, _, _ in
+            if let data = data {
+                img = UIImage(data: data)
+            }
+        }
+        return img
     }
 }
