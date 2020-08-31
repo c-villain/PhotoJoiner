@@ -46,7 +46,7 @@ struct PhotoCaruselView: View{
                                 Spacer()
                                 Image(systemName: "trash.fill")
                                     .foregroundColor(Color("Color"))
-                                    .font(.title3)
+                                    .font(.title)
                             }
                         }
                         .frame(width: calculateWidth() - 40)
@@ -122,8 +122,10 @@ struct PhotoCaruselView: View{
     }
 }
 
-//struct PhotoCaruselView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PhotoCaruselView()
-//    }
-//}
+struct PhotoCaruselView_Previews: PreviewProvider {
+    static var previews: some View {
+        let merger = Merger()
+        let saver = Saver()
+        return PhotoCaruselView(imagesVM: ImagesViewModel(merger: merger, saver: saver))
+    }
+}

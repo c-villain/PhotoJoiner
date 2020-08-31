@@ -12,20 +12,15 @@ struct JoinerBottomView: View {
     
     @ObservedObject var viewModel: ImagesViewModel
     
-//    @Binding var showingTopPopup: Bool
-//    var showingTopPopup: Binding<Bool>
-    
     private let shuffleTappedCallback: (Bool) -> ()
     private let savingTappedCallback: () -> ()
     
     public init(viewModel: ImagesViewModel,
                  shuffleTapped: @escaping (Bool) -> (),
                  savingTapped: @escaping () -> () ){
-//                 showingTopPopup: Binding<Bool>){
         self.viewModel = viewModel
         self.shuffleTappedCallback = shuffleTapped
         self.savingTappedCallback = savingTapped
-//        self.showingTopPopup = showingTopPopup
     }
     
     func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
@@ -59,7 +54,6 @@ struct JoinerBottomView: View {
             Button(action: {
                 self.viewModel.saveMergedImage()
                 savingTappedCallback()
-//                self.showingTopPopup = true
             }) {
                 HStack(spacing: 6){
                     Text("Join photos")
@@ -74,9 +68,13 @@ struct JoinerBottomView: View {
     }
 }
 
-//struct JoinerBottomView_Previews: PreviewProvider {
-//    @Binding var showingTopPopup: Bool
-//    static var previews: some View {
-//        JoinerBottomView(viewModel: ImagesViewModel(merger: Merger(), saver: Saver()), showingTopPopup: <#Binding<Bool>#>)
-//    }
-//}
+struct JoinerBottomView_Previews: PreviewProvider {
+    @Binding var showingTopPopup: Bool
+    static var previews: some View {
+        let merger = Merger()
+        let saver = Saver()
+        JoinerBottomView(viewModel: ImagesViewModel(merger: merger,
+                                                    saver: saver), shuffleTapped: {_ in }, savingTapped: {})
+        
+    }
+}

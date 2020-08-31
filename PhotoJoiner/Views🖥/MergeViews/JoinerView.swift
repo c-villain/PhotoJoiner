@@ -25,15 +25,6 @@ struct JoinerView: View {
     init(style: Style, viewModel: ImagesViewModel) {
         self.style = style
         self.viewModel = viewModel
-//        switch self.style{
-//            case .horizontal:
-//                columns = Double(self.viewModel.images.count)
-//            case .vertical:
-//                columns = 1
-//            case .table:
-//                self.showRuller = true
-//                columns = 2
-//        }
     }
     
     var body: some View {
@@ -88,8 +79,11 @@ struct JoinerView: View {
     }
 }
 
-//struct JoinerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        JoinerView()
-//    }
-//}
+struct JoinerView_Previews: PreviewProvider {
+    static var previews: some View {
+        let merger = Merger()
+        let saver = Saver()
+        return JoinerView(style: .table, viewModel: ImagesViewModel(merger: merger,
+                            saver: saver))
+    }
+}
