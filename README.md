@@ -1,15 +1,8 @@
 <div align="center">
     <img src="https://github.com/c-villain/PhotoJoiner/blob/master/.assets/logo.png" width="400pt">
-</div>
-
----
-
-<div align="center">
     <img src=https://img.shields.io/badge/Swift-5.2-orange.svg>
     <img src=https://img.shields.io/badge/Platform-iOS_13.2-green.svg>
 </div>
-
----
 
 ## About
 
