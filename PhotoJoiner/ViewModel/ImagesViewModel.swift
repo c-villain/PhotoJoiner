@@ -101,7 +101,12 @@ final class ImagesViewModel: ObservableObject{
     // MARK: - shuffling
     public func shuffle(){
         guard self.images.count > 0 else {return}
+        
+        let offsets = self.images.map{$0.offset} //currents offsets of images before shuffling
         self.images.shuffle()
+        for i in 0..<self.images.count {
+            self.images[i].offset = offsets[i]
+        }
     }
     
     //MARK: - merging
