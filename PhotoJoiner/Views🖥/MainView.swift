@@ -35,7 +35,7 @@ struct MainView : View {
                             Image("Add")
                                 .renderingMode(.template)
                                 .foregroundColor(Color("Color"))
-                        }
+                        }//.frame(width: 72, height: 63).padding()
                         
                     }.sheet(isPresented: $pickerShowed) {
                         if #available(iOS 14.0, *) {

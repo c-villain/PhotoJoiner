@@ -15,7 +15,6 @@ public struct PhotoImage : Identifiable {
     public var asset : PHAsset
     public var offset : CGFloat
     
-    
     init(image : UIImage){
         self.init(image: image, asset: PHAsset(), offset: 0)
     }

@@ -28,7 +28,10 @@ struct StyleSelectionView: View {
                     Image("Horiz")
                         .renderingMode(.template)
                         .foregroundColor(Color("Color"))
-                }.sheet(isPresented: $showHoriz){
+                }
+                .buttonStyle(PlainButtonStyle())
+//                .frame(width: 114, height: 65)
+                .sheet(isPresented: $showHoriz){
                     JoinerView(style: .horizontal,
                                viewModel: imagesViewModel)
                 }
@@ -41,7 +44,9 @@ struct StyleSelectionView: View {
                     Image("Vert")
                         .renderingMode(.template)
                         .foregroundColor(Color("Color"))
-                }.sheet(isPresented: $showVert){
+                }
+//                .frame(width: 137, height: 114)
+                .sheet(isPresented: $showVert){
                     JoinerView(style: .vertical,
                                viewModel: imagesViewModel)
                 }
@@ -54,7 +59,9 @@ struct StyleSelectionView: View {
                     Image("Table")
                         .renderingMode(.template)
                         .foregroundColor(Color("Color"))
-                }.sheet(isPresented: $showTable){
+                }
+//                .frame(width: 137, height: 114)
+                .sheet(isPresented: $showTable){
                     JoinerView(style: .table,
                                viewModel: imagesViewModel)
                 }
