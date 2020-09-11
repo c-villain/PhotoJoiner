@@ -1,0 +1,8 @@
+PhotoJoinerApp provides you an easiest way to merge photos  on your iPhone or iPad.
+Choose photos and template (vertical, horizontal, table) for merging photos, shuffle its if you want and click "Join photos" button. That's all. Hope you like it.
+
+PhotoJoinerApp does not collect or transfer any personal information.
+
+Contact
+
+If you have questions regarding our privacy policy, please contact us: lexkraev@gmail.com
